@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng ký khuôn mặt</title>
+</head>
+<body>
+  <h2>ESP32-CAM: Đăng ký khuôn mặt</h2>
+  <label>Nhập tên:</label>
+  <input type="text" id="name" placeholder="VD: linh">
+  <button onclick="capture()">📷 Chụp và lưu</button>
+  <p id="result"></p>
+
+  <script>
+    function capture() {
+      const name = document.getElementById('name').value.trim();
+      if (!name) {
+        alert("Vui lòng nhập tên");
+        return;
+      }
+      fetch('/trigger-capture', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ name })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('result').innerText =
+          data.status === 'ok'
+            ? 'Gửi yêu cầu chụp ảnh cho: ' + name
+            : 'Lỗi: ' + data.error;
+      });
+    }
+  </script>
+</body>
+</html>
