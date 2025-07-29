@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng ký khuôn mặt</title>
+</head>
+<body>
+  <h2>ESP32-CAM: Gửi ảnh khuôn mặt</h2>
+  <button onclick="capture()">📷 Chụp và lưu khuôn mặt</button>
+  <p id="result"></p>
+
+  <script>
+    function capture() {
+      fetch('/trigger-capture', {method: 'POST'})
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('result').innerText = 'Đã yêu cầu ESP32 chụp ảnh.';
+        });
+    }
+  </script>
+</body>
+</html>
