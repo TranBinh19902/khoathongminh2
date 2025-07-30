@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chúc mừng sinh nhật</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top right, #ffdee9, #b5fffc);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .center-message {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #ff2e63;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .center-message h1 {
+      font-size: 60px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .scroll-text {
+      position: absolute;
+      white-space: nowrap;
+      top: 80%;
+      font-size: 30px;
+      color: #ff2e63;
+      animation: scroll 15s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% { left: 100%; }
+      100% { left: -100%; }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center-message">
+    <h1>🎂 Chúc Mừng Sinh Nhật 🎉</h1>
+    <p>Chúc bạn một ngày thật tuyệt vời và tràn ngập yêu thương!</p>
+  </div>
+
+  <div class="scroll-text">💖 Chúc bạn tuổi mới nhiều niềm vui, sức khỏe và hạnh phúc! 💖</div>
+
+  <script>
+    // Tạo hiệu ứng trái tim bay
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 200);
+  </script>
+</body>
+</html>
 
