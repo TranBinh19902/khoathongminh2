@@ -11,7 +11,7 @@ person_name = None
 
 @app.route('/')
 def index():
-    return render_haiduong('cmsn.html')
+   return render_template('cmsn.html')
 
 @app.route('/trigger-capture', methods=['POST'])
 def trigger_capture():
